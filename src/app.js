@@ -32,6 +32,15 @@ app.get("/", (req, res) => {
   res.json({ message: "Welcome to Zorvyn Backend API" });
 });
 
+// Health check endpoint for Render
+app.get("/health", (req, res) => {
+  res.status(200).json({
+    status: "OK",
+    message: "Finance Dashboard Backend is running",
+    timestamp: new Date().toISOString(),
+  });
+});
+
 // 404 handler
 app.use((req, res) => {
   res.status(404).json({ error: "Route not found" });

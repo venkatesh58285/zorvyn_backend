@@ -93,6 +93,37 @@ MONGO_URI=mongodb+srv://username:password@cluster.mongodb.net/zorvyn_db
 JWT_SECRET=your_super_secret_key_change_in_production
 ```
 
+## 🚀 Deployment to Render
+
+This project is optimized for deployment on [Render](https://render.com).
+
+### Quick Deploy Steps:
+
+1. **Fork/Clone** this repository to your GitHub
+2. **Sign up** at [render.com](https://render.com) and connect your GitHub
+3. **Create New Web Service**:
+   - Connect your GitHub repository
+   - **Runtime**: `Node`
+   - **Build Command**: `npm install`
+   - **Start Command**: `npm start`
+4. **Add Environment Variables**:
+   ```
+   NODE_ENV=production
+   MONGO_URI=your_mongodb_atlas_connection_string
+   JWT_SECRET=your_super_secret_key_32_chars_minimum
+   ```
+5. **Deploy!** Your API will be live in 2-3 minutes
+
+### Health Check:
+
+- Visit `https://your-app-name.onrender.com/health` to verify deployment
+
+### Free Tier Limits:
+
+- 750 hours/month (scales to zero when inactive)
+- Auto-SSL included
+- Automatic scaling
+
 ## ⚠️ Assumptions
 
 - Roles are predefined (viewer/analyst/admin) and assigned during user registration
@@ -122,7 +153,7 @@ Returns meaningful error messages with proper HTTP status codes:
 - 429: Too Many Requests (rate limited)
 - 500: Server Error (database/internal errors)
 
-## 📌 Key Highlights 
+## 📌 Key Highlights
 
 - Clean separation of concerns (MVC structure)
 - Scalable role-based access control
