@@ -1,6 +1,8 @@
 require("dotenv").config();
 const express = require("express");
+const swaggerUi = require("swagger-ui-express");
 const connectDB = require("./config/db");
+const swaggerSpecs = require("./config/swagger");
 const authRoutes = require("./routes/authRoutes");
 const recordRoutes = require("./routes/recordRoutes");
 const dashboardRoutes = require("./routes/dashboardRoutes");
@@ -21,6 +23,9 @@ app.use(express.json());
 // Rate limiting
 app.use(generalLimiter); // Apply to all routes
 app.use("/api/auth", authLimiter); // Stricter limit for auth
+
+// Swagger API Documentation
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpecs));
 
 // Routes
 app.use("/api/auth", authRoutes);

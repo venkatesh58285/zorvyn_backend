@@ -13,6 +13,7 @@ It supports secure user management, transaction handling, and dashboard analytic
 - Advanced filtering by date range, category, and transaction type
 - Pagination support for large datasets (page/limit with max 100 records)
 - Dashboard analytics with aggregation pipelines (summary, categories, trends)
+- **Interactive API Documentation** with Swagger UI (auto-generated from OpenAPI specs)
 - Input validation with detailed error messages
 - Global error handling with proper HTTP status codes
 - Rate limiting to prevent abuse (100 req/15min general, 5 req/15min auth)
@@ -77,6 +78,21 @@ Dashboard APIs use MongoDB aggregation pipelines to calculate:
 
 All aggregations handle conditional logic for income vs expense calculations and provide real-time analytics.
 
+## 📚 API Documentation
+
+**Interactive Swagger API Documentation:**
+
+- **Live API Docs**: [https://zorvyn-backend-5nrb.onrender.com/api-docs](https://zorvyn-backend-5nrb.onrender.com/api-docs)
+- **Local Development**: http://localhost:3000/api-docs
+
+The API documentation includes:
+
+- All endpoint specifications with request/response examples
+- Authentication details and bearer token usage
+- Schema definitions for models
+- Try-it-out functionality to test endpoints directly from the UI
+- Complete parameter and query documentation
+
 ## ⚙️ Setup Instructions
 
 1. Clone the repository
@@ -95,7 +111,17 @@ JWT_SECRET=your_super_secret_key_change_in_production
 
 ## 🚀 Deployment to Render
 
-This project is optimized for deployment on [Render](https://render.com).
+This project is **successfully deployed** on [Render](https://render.com).
+
+### 🌐 Live Deployment
+
+**Production URL**: [https://zorvyn-backend-5nrb.onrender.com](https://zorvyn-backend-5nrb.onrender.com)
+
+**Available Live Endpoints:**
+
+- **API Docs**: [https://zorvyn-backend-5nrb.onrender.com/api-docs](https://zorvyn-backend-5nrb.onrender.com/api-docs) 📖
+- **Health Check**: [https://zorvyn-backend-5nrb.onrender.com/health](https://zorvyn-backend-5nrb.onrender.com/health)
+- **Base URL**: https://zorvyn-backend-5nrb.onrender.com
 
 ### Quick Deploy Steps:
 
