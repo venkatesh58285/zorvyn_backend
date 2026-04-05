@@ -121,3 +121,10 @@ Returns meaningful error messages with proper HTTP status codes:
 - 404: Not Found (resource doesn't exist)
 - 429: Too Many Requests (rate limited)
 - 500: Server Error (database/internal errors)
+
+## 📌 Key Highlights 
+
+- Clean separation of concerns (MVC structure)
+- Scalable role-based access control
+- Efficient aggregation for analytics
+- Focus on maintainability and readability
