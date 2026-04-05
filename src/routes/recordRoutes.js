@@ -17,9 +17,9 @@ router.use(verifyToken);
  * @swagger
  * /api/records:
  *   get:
- *     summary: Get financial records with pagination and filtering
+ *     summary: Get financial records
  *     tags:
- *       - Financial Records
+ *       - Records
  *     security:
  *       - bearerAuth: []
  *     parameters:
@@ -54,20 +54,20 @@ router.use(verifyToken);
  *           format: date
  *     responses:
  *       200:
- *         description: Records retrieved successfully
+ *         description: Records retrieved
  *         content:
  *           application/json:
  *             schema:
  *               type: object
  *               properties:
+ *                 message:
+ *                   type: string
  *                 data:
  *                   type: array
  *                   items:
  *                     type: object
  *                 pagination:
  *                   type: object
- *       401:
- *         description: Unauthorized
  */
 router.get("/", authorize("analyst", "admin"), getRecords);
 
@@ -75,9 +75,9 @@ router.get("/", authorize("analyst", "admin"), getRecords);
  * @swagger
  * /api/records:
  *   post:
- *     summary: Create a new financial record (Admin only)
+ *     summary: Create a financial record (Admin only)
  *     tags:
- *       - Financial Records
+ *       - Records
  *     security:
  *       - bearerAuth: []
  *     requestBody:
@@ -87,32 +87,31 @@ router.get("/", authorize("analyst", "admin"), getRecords);
  *           schema:
  *             type: object
  *             required:
+ *               - amount
  *               - type
  *               - category
- *               - amount
- *               - date
  *             properties:
+ *               amount:
+ *                 type: number
  *               type:
  *                 type: string
  *                 enum: [income, expense]
  *               category:
  *                 type: string
- *                 example: Salary
- *               amount:
- *                 type: number
- *                 example: 5000
- *               description:
- *                 type: string
  *               date:
  *                 type: string
  *                 format: date
+ *               note:
+ *                 type: string
+ *           example:
+ *             amount: 5000
+ *             type: income
+ *             category: Salary
+ *             date: "2026-04-06"
+ *             note: Monthly salary
  *     responses:
  *       201:
- *         description: Record created successfully
- *       400:
- *         description: Validation error
- *       403:
- *         description: Forbidden - Admin only
+ *         description: Record created
  */
 router.post("/", authorize("admin"), createRecord);
 
@@ -120,9 +119,9 @@ router.post("/", authorize("admin"), createRecord);
  * @swagger
  * /api/records/{id}:
  *   put:
- *     summary: Update a financial record (Admin only)
+ *     summary: Update a record (Admin only)
  *     tags:
- *       - Financial Records
+ *       - Records
  *     security:
  *       - bearerAuth: []
  *     parameters:
@@ -138,25 +137,21 @@ router.post("/", authorize("admin"), createRecord);
  *           schema:
  *             type: object
  *             properties:
+ *               amount:
+ *                 type: number
  *               type:
  *                 type: string
  *                 enum: [income, expense]
  *               category:
  *                 type: string
- *               amount:
- *                 type: number
- *               description:
- *                 type: string
  *               date:
  *                 type: string
  *                 format: date
+ *               note:
+ *                 type: string
  *     responses:
  *       200:
- *         description: Record updated successfully
- *       404:
- *         description: Record not found
- *       403:
- *         description: Forbidden - Admin only
+ *         description: Record updated
  */
 router.put("/:id", authorize("admin"), updateRecord);
 
@@ -164,9 +159,9 @@ router.put("/:id", authorize("admin"), updateRecord);
  * @swagger
  * /api/records/{id}:
  *   delete:
- *     summary: Delete a financial record (Admin only)
+ *     summary: Delete a record (Admin only)
  *     tags:
- *       - Financial Records
+ *       - Records
  *     security:
  *       - bearerAuth: []
  *     parameters:
@@ -177,11 +172,7 @@ router.put("/:id", authorize("admin"), updateRecord);
  *           type: string
  *     responses:
  *       200:
- *         description: Record deleted successfully
- *       404:
- *         description: Record not found
- *       403:
- *         description: Forbidden - Admin only
+ *         description: Record deleted
  */
 router.delete("/:id", authorize("admin"), deleteRecord);
 

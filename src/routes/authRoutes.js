@@ -17,20 +17,25 @@ const router = express.Router();
  *           schema:
  *             type: object
  *             required:
+ *               - name
  *               - email
  *               - password
  *               - role
  *             properties:
+ *               name:
+ *                 type: string
  *               email:
  *                 type: string
- *                 example: user@example.com
  *               password:
  *                 type: string
- *                 example: password123
  *               role:
  *                 type: string
  *                 enum: [viewer, analyst, admin]
- *                 example: analyst
+ *           example:
+ *             name: John Doe
+ *             email: john@example.com
+ *             password: password123
+ *             role: analyst
  *     responses:
  *       201:
  *         description: User registered successfully
@@ -41,12 +46,10 @@ const router = express.Router();
  *               properties:
  *                 message:
  *                   type: string
- *                 user:
- *                   type: object
- *       400:
- *         description: Validation error
- *       429:
- *         description: Too many requests
+ *                 userId:
+ *                   type: string
+ *                 email:
+ *                   type: string
  */
 router.post("/register", register);
 
@@ -69,10 +72,11 @@ router.post("/register", register);
  *             properties:
  *               email:
  *                 type: string
- *                 example: user@example.com
  *               password:
  *                 type: string
- *                 example: password123
+ *           example:
+ *             email: john@example.com
+ *             password: password123
  *     responses:
  *       200:
  *         description: Login successful
@@ -87,10 +91,15 @@ router.post("/register", register);
  *                   type: string
  *                 user:
  *                   type: object
- *       401:
- *         description: Invalid credentials
- *       429:
- *         description: Too many login attempts
+ *                   properties:
+ *                     id:
+ *                       type: string
+ *                     name:
+ *                       type: string
+ *                     email:
+ *                       type: string
+ *                     role:
+ *                       type: string
  */
 router.post("/login", login);
 

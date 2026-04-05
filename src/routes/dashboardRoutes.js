@@ -17,14 +17,14 @@ router.use(authorize("viewer", "analyst", "admin"));
  * @swagger
  * /api/dashboard/summary:
  *   get:
- *     summary: Get financial summary (total income, expense, net balance)
+ *     summary: Get financial summary
  *     tags:
- *       - Dashboard Analytics
+ *       - Dashboard
  *     security:
  *       - bearerAuth: []
  *     responses:
  *       200:
- *         description: Summary retrieved successfully
+ *         description: Summary data
  *         content:
  *           application/json:
  *             schema:
@@ -36,8 +36,6 @@ router.use(authorize("viewer", "analyst", "admin"));
  *                   type: number
  *                 netBalance:
  *                   type: number
- *       401:
- *         description: Unauthorized
  */
 router.get("/summary", getSummary);
 
@@ -45,14 +43,14 @@ router.get("/summary", getSummary);
  * @swagger
  * /api/dashboard/categories:
  *   get:
- *     summary: Get category-wise income and expense breakdown
+ *     summary: Get category-wise breakdown
  *     tags:
- *       - Dashboard Analytics
+ *       - Dashboard
  *     security:
  *       - bearerAuth: []
  *     responses:
  *       200:
- *         description: Category breakdown retrieved successfully
+ *         description: Category breakdown
  *         content:
  *           application/json:
  *             schema:
@@ -68,8 +66,6 @@ router.get("/summary", getSummary);
  *                     type: number
  *                   recordCount:
  *                     type: integer
- *       401:
- *         description: Unauthorized
  */
 router.get("/categories", getCategoryBreakdown);
 
@@ -77,14 +73,14 @@ router.get("/categories", getCategoryBreakdown);
  * @swagger
  * /api/dashboard/trends:
  *   get:
- *     summary: Get monthly income and expense trends
+ *     summary: Get monthly trends
  *     tags:
- *       - Dashboard Analytics
+ *       - Dashboard
  *     security:
  *       - bearerAuth: []
  *     responses:
  *       200:
- *         description: Monthly trends retrieved successfully
+ *         description: Monthly trends
  *         content:
  *           application/json:
  *             schema:
@@ -98,8 +94,6 @@ router.get("/categories", getCategoryBreakdown);
  *                     type: number
  *                   expense:
  *                     type: number
- *       401:
- *         description: Unauthorized
  */
 router.get("/trends", getMonthlyTrends);
 
